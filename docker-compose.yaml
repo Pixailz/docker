@@ -1,0 +1,15 @@
+x-healthcheck_conf: &healthcheck_conf
+      interval: 5s
+      retries: 30
+
+services:
+  is_working:
+    build:
+      dockerfile: Dockerfile
+      args:
+        - TAG=${TAG:-edge}
+    environment:
+      - DOCKER_DEBUG=1
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000"]
+      <<: *healthcheck_conf
