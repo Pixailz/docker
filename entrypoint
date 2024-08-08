@@ -30,7 +30,7 @@ if [ "${DOCKER_DEBUG}" != "" ]; then
 fi
 
 # Initialize the service only if not already initialized
-if [ ! -f "${PWD}/node_modules" ]; then
+if [ ! -d "${PWD}/node_modules" ]; then
 	:
 else
 	printf "%b %b, Skiping initialization\n" "${SERVICE_NAME}" "${GRE}found${RST}"
